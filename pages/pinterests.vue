@@ -1,8 +1,24 @@
 <template>
-    <section class="section">
-        <h1>hello world</h1>
+  <section class="container">
 
-    </section>
+    <div class="jumbotron">
+      <h1>Hello, world!</h1>
+      <p>This is an example to show the potential of an offcanvas layout pattern in Bootstrap. Try some responsive-range viewport sizes to see it in action.</p>
+    </div>
+
+    <div class="row">
+      <div class="card-pinterests">
+        <div class="col-12 col-md-4 col-lg-3 card-pinterest" v-for="(pinterest, index) in pinterests" :key="index">
+          <div class="pinterest-picture">
+            <img :src="pinterest.picture" alt="">
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </section>
 </template>
 
 
@@ -43,3 +59,30 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+.card-block {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  padding: 1.25rem;
+}
+
+
+.card-pinterests {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+
+  & .card-pinterest {
+    margin-bottom: 2rem;
+
+    & .pinterest-picture {
+      display: flex;
+      width: 100%;
+    }
+  }
+}
+</style>
+
