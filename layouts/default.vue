@@ -17,18 +17,18 @@
 
 <style lang="scss">
 
-.nav {
-  background-color: rgba(0,0,0,.5);
-}
-
-.nav-link {
-  color: #000;
-  &:hover {
-
+  .nav {
+    background-color: rgba(0, 0, 0, .5);
   }
-  &.is-active {
-     color: #fff; 
+
+  .nav-link {
+    color: #000;
+    &:hover {
+      color: #fff;
+    }
+    &.is-active {
+      color: #fff;
+    }
   }
-}
 
 </style>
