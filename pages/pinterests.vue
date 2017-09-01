@@ -8,14 +8,37 @@
 
     <div class="btn-panel">
       <button type="button" class="btn btn-outline-primary" @click="shuffle">shuffle</button>
-      <button type="button" class="btn btn-outline-success" @click="reset">reset</button>
+      <button type="button" class="btn btn-outline-danger" @click="reset">reset</button>
       <button type="button" class="btn btn-outline-success" @click="filterFood">food</button>
       <button type="button" class="btn btn-outline-success" @click="filterFashion">fashion</button>
+      <button type="button" class="btn btn-outline-success" @click="filterAnimals">animals</button>
+      <button type="button" class="btn btn-outline-success" @click="filterSports">sports</button>
+      <button type="button" class="btn btn-outline-success" @click="filterCity">city</button>
+      <button type="button" class="btn btn-outline-success" @click="filterAbstract">abstract</button>
     </div>
 
+    <div class="btn-panel">
+      <label class="btn-panel-label">排列方式 :</label>
+
+      <div class="form-check form-check-inline">
+        <label class="form-check-label">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineCheckbox2" value="normal" v-model="arrangement" @change="onChangeArrangement"> 標準
+        </label>
+      </div>
+      <div class="form-check form-check-inline disabled">
+        <label class="form-check-label">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineCheckbox3" value="sequence" v-model="arrangement" @change="onChangeArrangement"> 序列
+        </label>
+      </div>
+    </div>
+    <!-- {'is-sequence': arrangement === 'sequence'} -->
+    <!-- pinterest.tag -->
+    <!-- {'is-sequence': isSequence} -->
+    <!-- col-12 col-sm-6 col-md-4  -->
+
     <div class="row grid">
-      <div class="col-12 col-sm-6 col-md-4 grid-item" v-for="(pinterest, index) in pinterests" :key="index" :class="pinterest.tag">
-        <Card :pinterest="pinterest"></Card>
+      <div class="col-12 col-sm-6 col-md-4 top-offset grid-item" v-for="(pinterest, index) in pinterests" :key="index" :class="[pinterest.tag, {'is-sequence': isSequence}]">
+        <Card :pinterest="pinterest" :arrangement="arrangement"></Card>
       </div>
     </div>
 
@@ -219,18 +242,22 @@ export default {
 
 
       ],
+      arrangement: 'normal',
     }
   },
   components: {
     Card,
   },
+  computed: {
+    isSequence() {
+      return this.arrangement === 'sequence'
+    }
+  },
   methods: {
     reset() {
-      // this.pinterests = _.sortBy(this.pinterests, ['id']);
-      // $('.grid').isotope({ filter: '*' });
+      $('.grid').isotope({ filter: '' })
     },
     shuffle() {
-      // this.pinterests = _.shuffle(this.pinterests)
       $('.grid').isotope('shuffle')
     },
     filterFood() {
@@ -238,6 +265,23 @@ export default {
     },
     filterFashion() {
       $('.grid').isotope({ filter: '.fashion' })
+    },
+    filterAnimals() {
+      $('.grid').isotope({ filter: '.animals' })
+    },
+    filterSports() {
+      $('.grid').isotope({ filter: '.sports' })
+    },
+    filterCity() {
+      $('.grid').isotope({ filter: '.city' })
+    },
+    filterAbstract() {
+      $('.grid').isotope({ filter: '.abstract' })
+    },
+    onChangeArrangement() {
+      console.log(this.arrangement)
+
+      $('.grid').isotope('layout');
     }
   },
   mounted() {
@@ -259,16 +303,7 @@ export default {
 </script>
 
 <style lang="scss">
-// .grid-item {
-//   width: 200px;
-// }
-
-// .grid-item--width2 {
-//   width: 400px;
-// }
-
-
-[class*="col-"] {
+.top-offset {
   margin-bottom: 1.25rem;
 }
 
@@ -290,10 +325,28 @@ export default {
   margin-bottom: 2rem;
   background-color: #E9ECEF;
 
+  & .btn-panel-label {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    font-weight: 700;
+  }
+
   & .btn {
     margin: 0 20px;
     cursor: pointer;
   }
 }
+
+.grid-item {
+  // width: 50%;
+  // padding: 0 15px;
+
+  &.is-sequence {
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
 </style>
 
