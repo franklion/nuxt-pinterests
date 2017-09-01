@@ -2,7 +2,7 @@
   <section class="container">
 
     <div class="jumbotron">
-      <h1>Vue pinterest</h1>
+      <h1>Nuxt Pinterests</h1>
       <p>Search something what you want!</p>
     </div>
 
@@ -31,6 +31,7 @@
         </label>
       </div>
     </div>
+
     <!-- {'is-sequence': arrangement === 'sequence'} -->
     <!-- pinterest.tag -->
     <!-- {'is-sequence': isSequence} -->
@@ -320,7 +321,7 @@ export default {
 }
 
 .btn-panel {
-  padding: 25px 0;
+  padding: 15px 0;
   border-radius: .3rem;
   margin-bottom: 2rem;
   background-color: #E9ECEF;
@@ -332,7 +333,7 @@ export default {
   }
 
   & .btn {
-    margin: 0 20px;
+    margin: 20px;
     cursor: pointer;
   }
 }
