@@ -252,7 +252,7 @@ export default {
   computed: {
     isSequence() {
       return this.arrangement === 'sequence'
-    }
+    },
   },
   methods: {
     reset() {
@@ -280,26 +280,26 @@ export default {
       $('.grid').isotope({ filter: '.abstract' })
     },
     onChangeArrangement() {
-      $('.grid').isotope('layout');
-    }
+      $('.grid').isotope('layout')
+    },
   },
   mounted() {
-    let $grid = $('.grid')
+    const $grid = $('.grid')
 
     // init Isotope first, before imagesLoaded
     // percentPosition: to reduce adjustment transitions on window resize.
     $grid.isotope({
       itemSelector: '.grid-item',
       percentPosition: true,
-      layoutMode: 'masonry'
-    });
+      layoutMode: 'masonry',
+    })
     // okay to call methods
     $grid.isotope('shuffle')
 
     // just do layout on imagesLoaded
-    $grid.imagesLoaded(function() {
+    $grid.imagesLoaded(() => {
       $grid.isotope('layout');
-    });
+    })
 
   },
 }
