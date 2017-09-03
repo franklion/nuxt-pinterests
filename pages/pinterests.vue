@@ -280,17 +280,18 @@ export default {
       $('.grid').isotope({ filter: '.abstract' })
     },
     onChangeArrangement() {
-      console.log(this.arrangement)
-
       $('.grid').isotope('layout');
     }
   },
   mounted() {
     let $grid = $('.grid')
 
+    // init Isotope first, before imagesLoaded
+    // percentPosition: to reduce adjustment transitions on window resize.
     $grid.isotope({
       itemSelector: '.grid-item',
-      layoutMode: 'fitRows'
+      percentPosition: true,
+      layoutMode: 'masonry'
     });
     // okay to call methods
     $grid.isotope('shuffle')
@@ -299,6 +300,7 @@ export default {
     $grid.imagesLoaded(function() {
       $grid.isotope('layout');
     });
+
   },
 }
 </script>
@@ -341,13 +343,11 @@ export default {
 .grid-item {
   // width: 50%;
   // padding: 0 15px;
-
   &.is-sequence {
     -ms-flex: 0 0 100%;
     flex: 0 0 100%;
     max-width: 100%;
   }
 }
-
 </style>
 

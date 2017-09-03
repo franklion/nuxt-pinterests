@@ -4,7 +4,7 @@
             <img class="card-img-top" :src="pinterest.picture" alt="Card image cap">
         </div>
 
-        <div class="card-body">
+        <div class="card-body" v-if="isSequence">
             <h4 class="card-title">{{ pinterest.title }}</h4>
             <p class="card-text">{{ pinterest.desc }}</p>
         </div>
