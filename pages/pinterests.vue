@@ -1,6 +1,5 @@
 <template>
   <section class="container">
-  <section class="container">
     <div class="jumbotron">
       <h1>Nuxt Pinterests</h1>
       <p>Search something what you want!</p>
