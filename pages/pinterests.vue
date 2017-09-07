@@ -1,6 +1,6 @@
 <template>
   <section class="container">
-
+  <section class="container">
     <div class="jumbotron">
       <h1>Nuxt Pinterests</h1>
       <p>Search something what you want!</p>
@@ -9,6 +9,10 @@
     <div class="btn-panel">
       <button type="button" class="btn btn-outline-primary" @click="shuffle">shuffle</button>
       <button type="button" class="btn btn-outline-danger" @click="reset">reset</button>
+    </div>
+
+    <div class="btn-panel">
+      <h3>Fliter第一種寫法</h3>
       <button type="button" class="btn btn-outline-success" @click="filterFood">food</button>
       <button type="button" class="btn btn-outline-success" @click="filterFashion">fashion</button>
       <button type="button" class="btn btn-outline-success" @click="filterAnimals">animals</button>
@@ -18,25 +22,26 @@
     </div>
 
     <div class="btn-panel">
+      <h3>Fliter第二種寫法</h3>
+      <button type="button" class="btn btn-outline-success" @click="fliterTag(tag)" v-for="(tag, index) in tags" :key="index">{{ tag }}</button>
+    </div>
+
+    <div class="btn-panel">
       <label class="btn-panel-label">排列方式 :</label>
 
       <div class="form-check form-check-inline">
         <label class="form-check-label">
-          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineCheckbox2" value="normal" v-model="arrangement" @change="onChangeArrangement"> 標準
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" value="normal" v-model="arrangement" @change="onChangeArrangement"> 標準
         </label>
       </div>
       <div class="form-check form-check-inline disabled">
         <label class="form-check-label">
-          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineCheckbox3" value="sequence" v-model="arrangement" @change="onChangeArrangement"> 序列
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" value="sequence" v-model="arrangement" @change="onChangeArrangement"> 序列
         </label>
       </div>
     </div>
 
-    <!-- {'is-sequence': arrangement === 'sequence'} -->
-    <!-- pinterest.tag -->
-    <!-- {'is-sequence': isSequence} -->
-    <!-- col-12 col-sm-6 col-md-4  -->
-
+    <!-- card group -->
     <div class="row grid">
       <div class="col-12 col-sm-6 col-md-4 top-offset grid-item" v-for="(pinterest, index) in pinterests" :key="index" :class="[pinterest.tag, {'is-sequence': isSequence}]">
         <Card :pinterest="pinterest" :arrangement="arrangement"></Card>
@@ -253,6 +258,15 @@ export default {
     isSequence() {
       return this.arrangement === 'sequence'
     },
+    tags() {
+      return this.pinterests.reduce((container, pinterest) => {
+        const existingElement = container.find(target => target === pinterest.tag)
+        if (!existingElement) {
+          container.push(pinterest.tag)
+        }
+        return container
+      }, [])
+    },
   },
   methods: {
     reset() {
@@ -260,6 +274,9 @@ export default {
     },
     shuffle() {
       $('.grid').isotope('shuffle')
+    },
+    fliterTag(tag) {
+      $('.grid').isotope({ filter: `.${tag}` })
     },
     filterFood() {
       $('.grid').isotope({ filter: '.food' })
@@ -298,9 +315,8 @@ export default {
 
     // just do layout on imagesLoaded
     $grid.imagesLoaded(() => {
-      $grid.isotope('layout');
+      $grid.isotope('layout')
     })
-
   },
 }
 </script>
@@ -322,6 +338,11 @@ export default {
   margin-top: 2rem;
 }
 
+.form-check-label,
+.form-check-input {
+  cursor: pointer;
+}
+
 .btn-panel {
   padding: 15px 0;
   border-radius: .3rem;
@@ -338,11 +359,14 @@ export default {
     margin: 20px;
     cursor: pointer;
   }
+
+  h3 {
+    margin: 0 20px;
+  }
 }
 
 .grid-item {
-  // width: 50%;
-  // padding: 0 15px;
+
   &.is-sequence {
     -ms-flex: 0 0 100%;
     flex: 0 0 100%;
