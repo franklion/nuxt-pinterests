@@ -8,6 +8,12 @@
       <li class="nav-item">
         <nuxt-link active-class="is-active" to="/pinterests" class="nav-link" exact>Pinterests</nuxt-link>
       </li>
+       <li class="nav-item">
+        <nuxt-link active-class="is-active" to="/foods" class="nav-link" exact>Foods</nuxt-link>
+      </li>
+       <li class="nav-item">
+        <nuxt-link active-class="is-active" to="/sample" class="nav-link" exact>sample</nuxt-link>
+      </li>
     </ul>
 
     <!-- displays the page component -->

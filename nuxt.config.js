@@ -37,6 +37,9 @@ module.exports = {
       {
         src: 'https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js'
       },
+      {
+        src: 'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.14.1/lodash.min.js'
+      }
     ],
   },
   /*
