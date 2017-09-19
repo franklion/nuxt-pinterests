@@ -117,18 +117,17 @@ export default {
     border: 1px solid #aaa;
     margin: 0 7px 10px;
     padding: 8px;
- 
     /* transition: all 1s; */
     /* display: inline-block; */
     /* margin-right: 10px; */
 }
-.list-item-body {}
+/* .list-item-body {}
 
 .title {}
 .text {}
 .photo {
     max-width: 100%;
-}
+} */
 
 .list-complete-move {
     transition: transform 1s;
@@ -136,7 +135,6 @@ export default {
 
 .list-complete-enter,
 .list-complete-leave-to
-/* .list-complete-leave-active for below version 2.1.8 */
 {
     opacity: 0;
     transition: all 1s;

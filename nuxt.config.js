@@ -25,18 +25,7 @@ module.exports = {
       rel: 'stylesheet',
       href: 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css',
     }],
-    script: [{
-        src: 'https://code.jquery.com/jquery-3.2.1.min.js'
-      },
-      {
-        src: 'https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js'
-      },
-      {
-        src: 'https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.js'
-      },
-      {
-        src: 'https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js'
-      },
+    script: [
       {
         src: 'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.14.1/lodash.min.js'
       }
