@@ -14,6 +14,9 @@
        <li class="nav-item">
         <nuxt-link active-class="is-active" to="/native" class="nav-link" exact>Native</nuxt-link>
       </li>
+       <li class="nav-item">
+        <nuxt-link active-class="is-active" to="/timeLiner" class="nav-link" exact>TimeLiner</nuxt-link>
+      </li>
     </ul>
 
     <!-- displays the page component -->

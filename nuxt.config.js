@@ -5,17 +5,17 @@ module.exports = {
   head: {
     title: 'nuxt-pinterests',
     meta: [{
-        charset: 'utf-8',
-      },
-      {
-        name: 'viewport',
-        content: 'width=device-width, initial-scale=1',
-      },
-      {
-        hid: 'description',
-        name: 'description',
-        content: 'Nuxt.js project',
-      },
+      charset: 'utf-8',
+    },
+    {
+      name: 'viewport',
+      content: 'width=device-width, initial-scale=1',
+    },
+    {
+      hid: 'description',
+      name: 'description',
+      content: 'Nuxt.js project',
+    },
     ],
     link: [{
       rel: 'icon',
@@ -26,9 +26,11 @@ module.exports = {
       href: 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css',
     }],
     script: [
-      {
-        src: 'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.14.1/lodash.min.js'
-      }
+      { src: 'https://code.jquery.com/jquery-3.2.1.min.js' },
+      { src: 'https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js' },
+      { src: 'https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.js' },
+      { src: 'https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js' },
+      { src: 'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.14.1/lodash.min.js' }
     ],
   },
   /*
