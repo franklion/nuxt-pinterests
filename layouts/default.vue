@@ -8,6 +8,9 @@
       <li class="nav-item">
         <nuxt-link active-class="is-active" to="/pinterests" class="nav-link" exact>Pinterests</nuxt-link>
       </li>
+      <li class="nav-item">
+        <nuxt-link active-class="is-active" to="/form" class="nav-link" exact>Form</nuxt-link>
+      </li>
     </ul>
 
     <!-- displays the page component -->
