@@ -41,6 +41,10 @@
     "no-mixed-operators": ["error", {
       "allowSamePrecedence": true
     }],
+<<<<<<< HEAD
     "import/no-extraneous-dependencies": 0
+=======
+    "max-len": 0
+>>>>>>> d7e463d00e3224474a1eb86dc0afae3fd06797ef
   }
 }
