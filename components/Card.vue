@@ -13,13 +13,13 @@
 
 <script>
 export default {
-    name: 'card',
-    props: ['pinterest', 'arrangement'],
-    computed: {
-        isSequence() {
-            return this.arrangement === 'sequence'
-        }
-    }
+  name: 'card',
+  props: ['pinterest', 'arrangement'],
+  computed: {
+    isSequence() {
+      return this.arrangement === 'sequence'
+    },
+  },
 }
 </script>
 

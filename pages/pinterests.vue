@@ -298,9 +298,8 @@ export default {
 
     // just do layout on imagesLoaded
     $grid.imagesLoaded(() => {
-      $grid.isotope('layout');
+      $grid.isotope('layout')
     })
-
   },
 }
 </script>
