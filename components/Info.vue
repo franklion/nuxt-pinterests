@@ -1,30 +1,53 @@
 <template>
   <div>
-      <input type="text" v-model="name">
+    <input type="text" v-model="name">
   </div>
 </template>
 
 <script>
+
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
   props: ['propsName'],
   data() {
     return {
-      name: '',
+      // localName: this.propsName
+      name: null
     }
   },
-  watch: {
-    // propsName(v) {
-    //   this.name = v
+  computed: {
+    // name: {
+    //   get() {
+    //     return this.getName
+    //   },
+    //   set(value) {
+    //     this.actionSetUserInfo(value)
+    //   }
     // },
-    propsName: {
-      handler(v) {
-        this.name = v
-      },
-      // immediate: true,
-    },
-
-
+    ...mapGetters({
+      getName: 'getName',
+    }),
   },
+  watch: {
+    propsName(v) {
+      this.name = v
+    },
+    // propsName(name) {
+    //   this.localName = name
+    // }
+    // propsName: {
+    //   handler(v) {
+    //     this.name = v
+    //   },
+    // immediate: true,
+    // },
+  },
+  methods: {
+    ...mapActions([
+      'actionSetUserInfo'
+    ])
+  }
 }
 </script>
 

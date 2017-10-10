@@ -100,6 +100,18 @@ export default {
     filteredItems() {
       // 當一載入頁面什麼都沒有選，this.filteredItem === null 將為TRUE，則顯示所有項目
       // 當按了過濾TAG按鈕後 filteredItem將會改變數值，則進行第二個條件式判斷
+      // return (a>b) ? true : false
+      /*
+      let sum = 0;
+      let a = 10;
+      let b = 20;
+
+      if(a>b) {
+        return sum = a + b
+      } else {
+        return false
+      }
+      */
       return this.items.filter(item => (this.filteredItem === null ? true : (item.tag === this.filteredItem)))
     },
   },
@@ -121,6 +133,9 @@ export default {
       // 選擇要過濾的項目為juice
       this.filteredItem = 'juice'
     },
+  },
+  mounted() {
+    console.log(132)
   },
 }
 </script>

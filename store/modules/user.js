@@ -1,6 +1,7 @@
 const types = {
   GET_USERINFO: 'user/GET_USERINFO',
   EMPTY_USERINFO: 'user/EMPTY_USERINFO',
+  SET_USERINFO: 'user/SET_USERINFO'
 }
 
 
@@ -28,6 +29,9 @@ const actions = {
     .catch((err) => {})  
 
   },
+  actionSetUserInfo ({ commit }, name) {
+    commit(types.SET_USERINFO, name)
+  },
 }
 
 
@@ -37,6 +41,9 @@ const mutations = {
   },
   [types.EMPTY_USERINFO] (state) {
     state.name = null
+  },
+  [types.SET_USERINFO] (state, name) {
+    state.name = name
   },
 }
 

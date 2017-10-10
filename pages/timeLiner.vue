@@ -6,6 +6,8 @@
     <div class="time-liner">
 
       <div class="timeline-wrapper" v-for="item in items" :key="item.id">
+        <!-- step3 使用元件 -->
+        <!-- 透過props把資料傳到元件 -->
         <timelineItem :item="item"></timelineItem>
       </div>
 
@@ -16,6 +18,7 @@
 
 
 <script>
+// step1 引入元件
 import timelineItem from '~/components/TimelineItem.vue'
 
 export default {
@@ -25,28 +28,67 @@ export default {
         {
           id: 1,
           year: 1998,
-          title: 'FLYING CARS',
-          context: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam necessitatibus reprehenderit veniam aliquid aperiam, amet ratione, possimus saepe accusantium accusamus aut hic praesentium ad a nam iste sed, rem dolor asperiores vel magnam at voluptatibus maiores quo. Esse odio dicta maiores! Eligendi quod eveniet repudiandae perspiciatis! Dolore ad vero repudiandae!',
-          image: 'http://lorempixel.com/200/200/sports/',
+          event: [
+            {
+              title: 'FLYING CARS1',
+              context: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam necessitatibus reprehenderit veniam aliquid aperiam, amet ratione, possimus saepe accusantium accusamus aut hic praesentium ad a nam iste sed, rem dolor asperiores vel magnam at voluptatibus maiores quo. Esse odio dicta maiores! Eligendi quod eveniet repudiandae perspiciatis! Dolore ad vero repudiandae!',
+              image: 'http://lorempixel.com/200/200/sports/',
+              isActive: false,
+            },
+            {
+              title: 'FLYING CARS2',
+              context: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam necessitatibus reprehenderit veniam aliquid aperiam, amet ratione, possimus saepe accusantium accusamus aut hic praesentium ad a nam iste sed, rem dolor asperiores vel magnam at voluptatibus maiores quo. Esse odio dicta maiores! Eligendi quod eveniet repudiandae perspiciatis! Dolore ad vero repudiandae!',
+              image: 'http://lorempixel.com/200/200/sports/',
+              isActive: false,
+            },
+          ],
         },
         {
           id: 2,
           year: 2000,
-          title: 'FLYING CARS',
-          context: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam necessitatibus reprehenderit veniam aliquid aperiam, amet ratione, possimus saepe accusantium accusamus aut hic praesentium ad a nam iste sed, rem dolor asperiores vel magnam at voluptatibus maiores quo. Esse odio dicta maiores! Eligendi quod eveniet repudiandae perspiciatis! Dolore ad vero repudiandae!',
-          image: 'http://lorempixel.com/200/200/sports/',
+          event: [
+            {
+              title: 'FLYING CARS1',
+              context: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam necessitatibus reprehenderit veniam aliquid aperiam, amet ratione, possimus saepe accusantium accusamus aut hic praesentium ad a nam iste sed, rem dolor asperiores vel magnam at voluptatibus maiores quo. Esse odio dicta maiores! Eligendi quod eveniet repudiandae perspiciatis! Dolore ad vero repudiandae!',
+              image: 'http://lorempixel.com/200/200/sports/',
+              isActive: false,
+            },
+          ],
         },
         {
           id: 3,
           year: 2010,
-          title: 'FLYING CARS',
-          context: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam necessitatibus reprehenderit veniam aliquid aperiam, amet ratione, possimus saepe accusantium accusamus aut hic praesentium ad a nam iste sed, rem dolor asperiores vel magnam at voluptatibus maiores quo. Esse odio dicta maiores! Eligendi quod eveniet repudiandae perspiciatis! Dolore ad vero repudiandae!',
-          image: 'http://lorempixel.com/200/200/sports/',
+          event: [
+            {
+              title: 'FLYING CARS1',
+              context: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam necessitatibus reprehenderit veniam aliquid aperiam, amet ratione, possimus saepe accusantium accusamus aut hic praesentium ad a nam iste sed, rem dolor asperiores vel magnam at voluptatibus maiores quo. Esse odio dicta maiores! Eligendi quod eveniet repudiandae perspiciatis! Dolore ad vero repudiandae!',
+              image: 'http://lorempixel.com/200/200/sports/',
+              isActive: false,
+            },
+            {
+              title: 'FLYING CARS2',
+              context: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam necessitatibus reprehenderit veniam aliquid aperiam, amet ratione, possimus saepe accusantium accusamus aut hic praesentium ad a nam iste sed, rem dolor asperiores vel magnam at voluptatibus maiores quo. Esse odio dicta maiores! Eligendi quod eveniet repudiandae perspiciatis! Dolore ad vero repudiandae!',
+              image: 'http://lorempixel.com/200/200/sports/',
+              isActive: false,
+            },
+            {
+              title: 'FLYING CARS3',
+              context: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam necessitatibus reprehenderit veniam aliquid aperiam, amet ratione, possimus saepe accusantium accusamus aut hic praesentium ad a nam iste sed, rem dolor asperiores vel magnam at voluptatibus maiores quo. Esse odio dicta maiores! Eligendi quod eveniet repudiandae perspiciatis! Dolore ad vero repudiandae!',
+              image: 'http://lorempixel.com/200/200/sports/',
+              isActive: false,
+            },
+          ],
+        },
+        {
+          id: 4,
+          year: 2010,
+          event: [],
         }],
       isActive: false,
     }
   },
   components: {
+    // step2 註冊元件
     timelineItem,
   },
 }
@@ -54,6 +96,7 @@ export default {
 
 
 <style lang="scss">
+// 滑入 滑出
 .slide-fade-enter-active {
   transition: all .3s ease;
 }
@@ -68,7 +111,7 @@ export default {
   opacity: 0;
 }
 
-
+// 淡入 淡出
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity .5s
@@ -79,41 +122,8 @@ export default {
   opacity: 0
 }
 
-
-
 .flip-move {
   transition: transform 1s;
-}
-
-
-
-
-
-/* 一進場 & 一離場 */
-
-
-/* 淡入淡出 */
-
-.flip-enter,
-.flip-leave-to {
-  opacity: 0;
-  transition: all 1s;
-}
-
-
-
-
-
-/* 離場的整個動畫 */
-
-
-/* 當離場結束後就恢復原狀 */
-
-
-/* 使用absolute所以每個項目將會往左上角靠攏 */
-
-.flip-leave-active {
-  position: absolute;
 }
 
 .container {
@@ -127,8 +137,7 @@ export default {
 
 .time-liner {
   position: relative;
-  height: 100vh; // border-left: 4px solid rgba(0, 69, 121, 0.65);
-  background-color: rgba(0, 0, 0, .3);
+  background-color: rgba(0, 0, 0, .2);
 
   &::before {
     content: '';
@@ -168,8 +177,6 @@ export default {
   }
 
   .timeline-series {
-
-
     .timeline-series-title {
       &::before {
         border-top: 3px solid rgba(0, 69, 121, 0.65);
