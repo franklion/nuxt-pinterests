@@ -1,7 +1,7 @@
 <template>
   <section class="container">
       <h1>form page</h1>
-      <info :propsName="name"></info>
+      <info :propsObj="obj"></info>
   </section>
 </template>
 
@@ -12,15 +12,16 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   data() {
     return {
+      obj: null
     }
   },
   components: {
     info,
   },
   computed: {
-    ...mapGetters({
-      name: 'getName',
-    }),
+    // ...mapGetters({
+    //   name: 'getName',
+    // }),
   },
   methods: {
     ...mapActions([
@@ -28,6 +29,9 @@ export default {
     ]),
   },
   mounted() {
+    setTimeout(()=>{
+      this.obj = {'name':'leo','info':{'age':99,'gender':'boy'}, intersted:[]}
+    }, 3*1000)
     this.actionGetUserInfo()
   },
 }

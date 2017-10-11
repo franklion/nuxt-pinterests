@@ -20,6 +20,11 @@ const actions = {
 
     // commit(types.EMPTY_USERINFO);
 
+
+    // setTimeout(()=>{
+    //   commit(types.GET_USERINFO, 'franklion');
+    // }, 5 * 1000)
+
     fetch('http://jsonplaceholder.typicode.com/users/1')
     .then(response =>
       response.json())
