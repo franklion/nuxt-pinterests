@@ -10,6 +10,10 @@
           <label>Password</label>
           <input type="password" class="form-control" placeholder="Password">
         </div>
+        <div class="form-group">
+          <label>RePassword</label>
+          <input type="password" class="form-control" placeholder="rePassword">
+        </div>
       </div>
     </div>
   </div>
