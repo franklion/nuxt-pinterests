@@ -19,15 +19,35 @@
         <li class="nav-item">
           <nuxt-link active-class="is-active" to="/timeLiner" class="nav-link" exact>TimeLiner</nuxt-link>
         </li>
-         <li class="nav-item">
+        <li class="nav-item">
           <nuxt-link active-class="is-active" to="/register" class="nav-link" exact>Register</nuxt-link>
         </li>
+        <li class="nav-item">
+          <nuxt-link active-class="is-active" to="/open1999" class="nav-link" exact>open1999</nuxt-link>
+        </li>
     </ul>
+
+    <div v-if="loading" class="loader loader-curtain is-active"></div>
 
     <!-- displays the page component -->
     <nuxt/>
   </div>
 </template>
+
+
+<script>
+import { mapGetters } from 'vuex';
+
+export default {
+  computed: mapGetters({
+    // 取得 loading state
+    loading: 'getLoading'
+  }),
+  mounted() {
+  }
+}
+</script>
+
 
 <style lang="scss">
 .nav {
@@ -43,4 +63,5 @@
     color: #fff;
   }
 }
+
 </style>
