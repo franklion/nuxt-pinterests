@@ -1,10 +1,16 @@
 <template>
   <div class="container open1999">
-
-    <nav class="navbar navbar-light bg-light justify-content-between open1999-nav">
-      <a class="navbar-brand">搜尋</a>
+    <h1 class="display-3 open1999-title">高雄市政府開放資料 - Open1999</h1>
+    <nav class="navbar navbar-light bg-light open1999-nav">
+      <!-- <a class="navbar-brand">搜尋</a> -->
       <form class="form-inline">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" v-model="searchKeyword" @keyup.enter="handleWorkSearch">
+        <select id="searchRegion" class="custom-select open1999-region-select" v-model="searchRegion">
+          <option value='all'>地區</option>
+          <option v-for="(option,index) in regionOption" :key="index" :value="option">
+            {{ option }}
+          </option>
+        </select>
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" v-model="searchKeyword" @keydown.enter.prevent="handleWorkSearch">
         <button class="btn btn-outline-success my-2 my-sm-0" type="button" @click="handleWorkSearch">查詢</button>
       </form>
     </nav>
@@ -22,7 +28,7 @@
         <div class="col-12 col-sm-12 col-md-6 col-lg-4" v-for="item in openData" :key="item.FileNo_">
           <div class="card">
             <div class="card-status">
-              <label class="btn btn-danger">{{ item.UnitName_ }}</label>
+              <label class="btn btn-danger">{{ item.ZipName_  }}</label>
               <label class="btn btn-primary">{{ item.InformDesc_ }}</label>
               <label class="btn btn-warning">{{ item.UnitName_ }}</label>
             </div>
@@ -31,7 +37,7 @@
               <h4 class="card-title">{{ item.InformDesc_ }}</h4>
               <p class="card-text">{{ item.BeforeDesc_ }}</p>
               <p>
-                <a :href="getGoogleMap( item.address_ )" target="_blank" class="link">{{ item.address_ }}</a>
+                <a :href="getGoogleMap( item.Lat_, item.Lng_ )" target="_blank" class="link">{{ item.address_ }}</a>
               </p>
               <p class="card-text card-data">
                 <small class="text-muted">反應日期：{{ item.Cre_Date_ }}</small>
@@ -53,25 +59,33 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   data() {
     return {
+      searchRegion: 'all',
       searchKeyword: ''
     }
   },
   computed: {
     ...mapGetters({
-      openData: 'getOpenData'
+      openData: 'getOpenData',
+      regionOption: 'getRegionOption'
     })
   },
   methods: {
+    getGoogleMap(lat, lng) {
+      return (lat && lng) ? `https://www.google.com/maps/place/${lat},${lng}` : 'javascript:;';
+    },
     handleWorkSearch() {
       this.actionSearchKeywordOfOpenData(this.searchKeyword)
     },
-    getGoogleMap(address) {
-      return `https://www.google.com/maps/place/${address}`;
-    },
     ...mapActions([
       'actionGetOpenData',
+      'actionSearchRegionOfOpenData',
       'actionSearchKeywordOfOpenData'
     ])
+  },
+  watch: {
+    searchRegion(val) {
+      this.actionSearchRegionOfOpenData(val)
+    }
   },
   mounted() {
 
@@ -93,6 +107,15 @@ export default {
 <style lang="scss">
 .open1999 {
   padding-top: 20px;
+
+  .open1999-region-select {
+    margin-right: 20px;
+  }
+
+  .open1999-title {
+    margin-bottom: 3rem;
+    margin-top: 1rem;
+  }
 }
 
 .card {
@@ -103,6 +126,8 @@ export default {
 .card-title {
   font-weight: bold;
 }
+
+
 
 .card-data {
   text-align: right;
@@ -123,6 +148,7 @@ export default {
 
 .open1999-nav {
   margin-bottom: 20px;
+  justify-content: flex-end;
 }
 </style>
 
