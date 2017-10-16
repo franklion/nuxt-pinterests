@@ -83,8 +83,8 @@ export default {
           id: 4,
           year: 2010,
           event: [],
-        }],
-      isActive: false,
+        }
+      ],
     }
   },
   components: {
