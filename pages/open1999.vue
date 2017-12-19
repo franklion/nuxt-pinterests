@@ -60,18 +60,18 @@ export default {
   data() {
     return {
       searchRegion: 'all',
-      searchKeyword: ''
+      searchKeyword: '',
     }
   },
   computed: {
     ...mapGetters({
       openData: 'getOpenData',
-      regionOption: 'getRegionOption'
-    })
+      regionOption: 'getRegionOption',
+    }),
   },
   methods: {
     getGoogleMap(lat, lng) {
-      return (lat && lng) ? `https://www.google.com/maps/place/${lat},${lng}` : 'javascript:;';
+      return (lat && lng) ? `https://www.google.com/maps/place/${lat},${lng}` : 'javascript:;'
     },
     handleWorkSearch() {
       this.actionSearchKeywordOfOpenData(this.searchKeyword)
@@ -79,17 +79,15 @@ export default {
     ...mapActions([
       'actionGetOpenData',
       'actionSearchRegionOfOpenData',
-      'actionSearchKeywordOfOpenData'
-    ])
+      'actionSearchKeywordOfOpenData',
+    ]),
   },
   watch: {
     searchRegion(val) {
       this.actionSearchRegionOfOpenData(val)
-    }
+    },
   },
   mounted() {
-
-
     // created Hook 發出 action call API
     this.actionGetOpenData()
       .then((response) => {
@@ -98,7 +96,6 @@ export default {
       .catch((e) => {
         console.log(e)
       })
-
   },
 }
 </script>
