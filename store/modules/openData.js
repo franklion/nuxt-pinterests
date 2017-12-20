@@ -43,26 +43,20 @@ const getters = {
 const actions = {
   actionGetOpenData({ commit }) {
     // 啟動 loading
-    // commit(rootypes.LOADING, true);
+    commit(rootypes.LOADING, true);
 
     return new Promise((resolve, reject) => {
 
-      // axiox.get('http://work1999.kcg.gov.tw/open1999/ServiceRequestsQuery.asmx/ServiceRequestsQuery')
       axiox({
-        url: 'https://json2jsonp.com/?url=http://work1999.kcg.gov.tw/open1999/ServiceRequestsQuery.asmx/ServiceRequestsQuery&callback=cbfunc',
+        url: 'https://franklion-resume.herokuapp.com/api/open1999',
         headers: {
-          Accept: 'application/jsonp',
+          Accept: 'application/json',
         },
-        jsonpCallback:"cbfunc",
         method: 'GET',
       })
       .then(response => {
 
-        const regex = /(\[.*\])/g;
-        const found = response.data.match(regex)[0]
-        const output = JSON.parse(found)
-
-        commit(types.OPEN_1999, output)
+        commit(types.OPEN_1999, response.data)
 
         // 關閉 loading
         commit(rootypes.LOADING, false);
