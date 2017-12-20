@@ -42,7 +42,7 @@ module.exports = {
       }
     ],
   },
-  css: ['@/assets/scss/loading.scss'],
+  css: ['@/assets/scss/loading2.scss'],
   /*
    ** Customize the progress-bar color
    */

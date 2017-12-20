@@ -1,5 +1,5 @@
 <template>
-  <div class="container open1999">
+  <div class="container open1999" :class="{ 'is-loading' : loading }">
     <h1 class="display-3 open1999-title">高雄市政府開放資料 - Open1999</h1>
     <nav class="navbar navbar-light bg-light open1999-nav">
       <!-- <a class="navbar-brand">搜尋</a> -->
@@ -67,6 +67,7 @@ export default {
     ...mapGetters({
       openData: 'getOpenData',
       regionOption: 'getRegionOption',
+      loading: 'getLoading',
     }),
   },
   methods: {
@@ -104,6 +105,10 @@ export default {
 <style lang="scss">
 .open1999 {
   padding-top: 20px;
+
+  &.is-loading {
+    opacity: 0;
+  }
 
   .open1999-region-select {
     margin-right: 20px;
