@@ -12,7 +12,7 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   data() {
     return {
-      obj: null
+      obj: null,
     }
   },
   components: {
@@ -29,9 +29,9 @@ export default {
     ]),
   },
   mounted() {
-    setTimeout(()=>{
-      this.obj = {'name':'leo','info':{'age':99,'gender':'boy'}, intersted:[]}
-    }, 3*1000)
+    setTimeout(() => {
+      this.obj = { name: 'leo', info: { age: 99, gender: 'boy' }, intersted: [] }
+    }, 3 * 1000)
     this.actionGetUserInfo()
   },
 }

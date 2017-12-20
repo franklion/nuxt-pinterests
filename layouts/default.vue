@@ -27,7 +27,8 @@
         </li>
     </ul>
 
-    <div v-if="loading" class="loader loader-curtain is-active"></div>
+    <!-- <div v-if="loading" class="loader loader-curtain is-active"></div> -->
+    <loading v-if="loading"></loading>
 
     <!-- displays the page component -->
     <nuxt/>
@@ -36,20 +37,26 @@
 
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters } from 'vuex'
+import loading from '~/components/Loading.vue'
 
 export default {
+  components: {
+    loading,
+  },
   computed: mapGetters({
     // 取得 loading state
-    loading: 'getLoading'
+    loading: 'getLoading',
   }),
-  mounted() {
-  }
 }
 </script>
 
 
 <style lang="scss">
+.is-loading {
+  opacity: 0;
+}
+
 .nav {
   background-color: rgba(0, 0, 0, .5);
 }

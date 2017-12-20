@@ -1,7 +1,7 @@
 <template>
     <div class="card" :class="{'is-sequence': isSequence}">
         <div>
-            <img class="card-img-top" :src="pinterest.picture" alt="Card image cap">
+            <img class="card-img-top" :src="'/images/' + pinterest.picture" alt="Card image cap">
         </div>
 
         <div class="card-body" v-if="isSequence">
